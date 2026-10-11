@@ -1,22 +1,18 @@
 import { useEffect, useState } from "react";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight, Heart, Handshake } from "lucide-react";
 import { motion } from "framer-motion";
 
 // ==========================================
-// LAUNCH DATE — 15 DAYS FROM NOW
+// LAUNCH DATE — DHANTERAS 2026
+// Nepal Time = +05:45
 // ==========================================
-const LAUNCH_DATE = (() => {
-  const launch = new Date();
-  launch.setDate(launch.getDate() + 15);
-  return launch.toISOString();
-})();
+const LAUNCH_DATE = "2026-11-06T17:46:00+05:45";
 
 // ==========================================
 // WHATSAPP CONTACT
 // Use full international format WITHOUT "+" or spaces
-// Example: Nepal number 98XXXXXXXX → 97798XXXXXXXX
 // ==========================================
-const WHATSAPP_NUMBER = "9779863958892"; // 
+const WHATSAPP_NUMBER = "9779800000000"; // <-- CHANGE THIS
 const WHATSAPP_MESSAGE = encodeURIComponent(
   "Hello Halesi Books & Stationary! I'd like to know more about your upcoming launch."
 );
@@ -126,6 +122,7 @@ function App() {
         className="relative z-10 w-full"
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+          {/* Halesi Logo + Name */}
           <div className="flex items-center gap-3">
             <motion.div
               whileHover={{ rotate: 6, scale: 1.05 }}
@@ -148,12 +145,35 @@ function App() {
             </div>
           </div>
 
-          <div className="hidden sm:flex items-center gap-2 border border-[var(--secondary)]/30 bg-white/60 backdrop-blur-sm text-[var(--secondary)] px-5 py-2 rounded-full text-sm shadow-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--secondary)] opacity-75 animate-ping" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--secondary)]" />
-            </span>
-            Launching Soon
+          {/* Right side: Powered by Riseup + Badge */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            {/* Powered by Riseup Tech — desktop only */}
+            <div className="hidden md:flex items-center gap-2 bg-white/60 backdrop-blur-sm border border-[var(--primary)]/10 rounded-full pl-2 pr-4 py-1.5 shadow-sm">
+              <div className="w-7 h-7 rounded-full overflow-hidden bg-white flex items-center justify-center">
+                <img
+                  src="/riseuptech-logo.png"
+                  alt="Riseup Tech"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="leading-tight">
+                <p className="text-[9px] text-[var(--primary)]/60 font-medium">
+                  Powered by
+                </p>
+                <p className="text-[11px] font-bold text-[var(--primary)]">
+                  Riseup Tech
+                </p>
+              </div>
+            </div>
+
+            {/* Launching Soon Badge */}
+            <div className="hidden sm:flex items-center gap-2 border border-[var(--secondary)]/30 bg-white/60 backdrop-blur-sm text-[var(--secondary)] px-5 py-2 rounded-full text-sm shadow-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--secondary)] opacity-75 animate-ping" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--secondary)]" />
+              </span>
+              Launching Soon
+            </div>
           </div>
         </div>
       </motion.header>
@@ -291,7 +311,26 @@ function App() {
             ))}
           </div>
 
-          
+          {/* ========================================
+              BOTTOM MESSAGE
+          ======================================== */}
+          <motion.div
+            custom={8}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-6"
+          >
+            <p className="flex justify-center items-center gap-2 text-[var(--primary)]/80 text-sm sm:text-base">
+              <motion.span
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Sparkles size={18} className="text-[var(--teal)]" />
+              </motion.span>
+              Great Stories. Endless Possibilities.
+            </p>
+          </motion.div>
 
           {/* ========================================
               CONTACT BUTTON — WhatsApp (GREEN)
@@ -328,7 +367,6 @@ function App() {
                 transition-colors
               "
             >
-              {/* WhatsApp icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -347,10 +385,164 @@ function App() {
             </motion.a>
           </motion.div>
 
+          {/* ========================================
+              PARTNERSHIP SECTION
+          ======================================== */}
+          <motion.div
+            custom={10}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-12 max-w-3xl mx-auto"
+          >
+            <div className="relative bg-white/70 backdrop-blur-md border border-[var(--primary)]/10 rounded-3xl p-6 sm:p-8 shadow-lg overflow-hidden">
+              {/* subtle gradient glow */}
+              <div className="absolute -top-20 -right-20 w-60 h-60 bg-[var(--accent)]/20 rounded-full blur-3xl" />
+              <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-[var(--teal)]/20 rounded-full blur-3xl" />
+
+              {/* Title */}
+              <div className="relative flex items-center justify-center gap-2 text-[var(--secondary)] mb-4">
+                <Handshake size={18} />
+                <p className="text-xs sm:text-sm font-bold tracking-[2px] sm:tracking-[3px]">
+                  OFFICIAL PARTNERSHIP
+                </p>
+                <Handshake size={18} />
+              </div>
+
+              {/* Logos + Names */}
+              <div className="relative flex items-center justify-center gap-4 sm:gap-8 flex-wrap">
+
+                {/* Halesi Books */}
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-[var(--primary)]/10 shadow-md flex items-center justify-center overflow-hidden">
+                    <img
+                      src="/logo.jpeg"
+                      alt="Halesi Books & Stationary"
+                      className="w-full h-full object-contain p-2"
+                    />
+                  </div>
+                  <p className="font-bold text-xs sm:text-sm text-[var(--primary)]">
+                    Halesi Books
+                  </p>
+                  <p className="text-[10px] text-[var(--primary)]/60 -mt-1">
+                    & Stationary
+                  </p>
+                </div>
+
+                {/* Connector */}
+                <div className="flex flex-col items-center">
+                  <motion.div
+                    animate={{ scale: [1, 1.15, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[var(--accent)] flex items-center justify-center shadow-lg shadow-[var(--accent)]/40"
+                  >
+                    <Heart size={18} className="text-white" fill="white" />
+                  </motion.div>
+                  <p className="text-[10px] font-semibold text-[var(--primary)]/60 mt-2 tracking-widest">
+                    TRUSTED
+                  </p>
+                </div>
+
+                {/* Riseup Tech */}
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-[var(--primary)]/10 shadow-md flex items-center justify-center overflow-hidden">
+                    <img
+                      src="/riseuptech-logo.png"
+                      alt="Riseup Tech"
+                      className="w-full h-full object-contain p-2"
+                    />
+                  </div>
+                  <p className="font-bold text-xs sm:text-sm text-[var(--primary)]">
+                    Riseup Tech
+                  </p>
+                  <p className="text-[10px] text-[var(--primary)]/60 -mt-1">
+                    Software Company
+                  </p>
+                </div>
+
+              </div>
+
+              {/* Description */}
+              <p className="relative text-center mt-6 text-[var(--primary)]/70 text-xs sm:text-sm leading-6 max-w-xl mx-auto">
+                We're proud to announce the official partnership between{" "}
+                <span className="font-semibold text-[var(--primary)]">
+                  Halesi Books & Stationary
+                </span>{" "}
+                and{" "}
+                <span className="font-semibold text-[var(--teal)]">
+                  Riseup Tech
+                </span>{" "}
+                — powering this digital experience with modern technology and
+                bringing books closer to you.
+              </p>
+
+              {/* Tagline badges */}
+              <div className="relative flex flex-wrap justify-center gap-2 mt-5">
+                {["Designed with ❤️", "Built for Readers", "Powered by Tech"].map(
+                  (tag, i) => (
+                    <motion.span
+                      key={tag}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.4 + i * 0.15 }}
+                      className="text-[10px] sm:text-xs font-medium px-3 py-1 rounded-full bg-[var(--primary)]/5 border border-[var(--primary)]/10 text-[var(--primary)]/80"
+                    >
+                      {tag}
+                    </motion.span>
+                  )
+                )}
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </main>
 
-     
+      {/* ========================================
+          FOOTER — MOBILE ONLY
+      ======================================== */}
+      <motion.footer
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
+        className="relative z-10 md:hidden border-t border-[var(--primary)]/10 bg-white/60 backdrop-blur-sm"
+      >
+        <div className="max-w-7xl mx-auto px-5 py-5 flex flex-col items-center justify-center gap-3">
+
+          {/* Copyright */}
+          <p className="text-[var(--primary)]/60 text-xs text-center">
+            © {new Date().getFullYear()} Halesi Books & Stationary.
+            <br />
+            All Rights Reserved.
+          </p>
+
+          {/* Riseup Tech credit with logo */}
+          <div className="flex items-center gap-2">
+            <span className="text-[var(--primary)]/60 text-xs">
+              Designed & Developed by
+            </span>
+            <a
+              href="https://www.riseuptech.com.np"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 group"
+            >
+              <div className="w-6 h-6 rounded-full overflow-hidden bg-white border border-[var(--primary)]/10 flex items-center justify-center">
+                <img
+                  src="/riseuptech-logo.png"
+                  alt="Riseup Tech"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <span className="text-[var(--teal)] group-hover:text-[var(--secondary)] transition font-semibold text-xs">
+                Riseup Tech
+              </span>
+            </a>
+          </div>
+
+        </div>
+      </motion.footer>
+
     </div>
   );
 }
